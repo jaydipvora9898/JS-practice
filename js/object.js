@@ -1,174 +1,129 @@
-// operator  / oprand
-// console.log(10 + 20);
-// console.log(20-30);
-// console.log(10 * 20);
-// console.log(20 / 10);
-// console.log(20 % 10);
-// console.log(2 ** 10);
+// Js object
 
-// let a = 10;
-// let b = 20;
+// syntex of object
 
-// console.log(a + b);
+// object literal
+// let person = {
+//     name: "John",
+//     age: 20,
+//     city: "New York"
 
-// let a = 10;
+// }
+
+// console.log(person);
+// console.log(person.name);
+// console.log(person.city);
+// person.city = "India";
+// delete person.age;
+
+// console.log(person);
+
+
+// const person = {
+//     firstName : "John",
+//     lastName : "Doe",
+//     age : 50,
+//     eyeColor : "blue"
+//   };
+
+
+//   console.log(Object.keys(person));
+//   console.log(Object.values(person));
+
+// date Object
+
+// let date = new Date();
+// console.log(date);
+// console.log(date.getDate());
+// console.log(date.getDay());
+// console.log(date.getMonth());
+// console.log(date.getFullYear());
+// console.log(date.getHours());
+// console.log(date.getMinutes());
+// console.log(date.getSeconds());
+// console.log(date.getMilliseconds());
+
+// math object
+
+// let a = 50;
 // console.log(a);
-//  a++;
-//  ++a;
-// console.log(a++);
-// console.log(++a);
+// console.log(Math.round(a));
 
-
-// Data Types 
-// primitive data types
-//    String , Number, Boolean, Null, Undefined, Symbol
-// non-primitive data types
-//    Object
-
-// console.log(10>=20);
-// console.log(10>20);
-// console.log(10<20);
-// console.log(10<=20);
-// console.log(10==20);
-// console.log(10!=10);
-// console.log(10!=="10");
-// console.log(10==="10");
+// console.log(Math.ceil(a));
+// console.log(Math.floor(a));
+// console.log(Math.abs(a));
+// console.log(Math.pow(a, 2));
+// console.log(Math.sqrt(a));
+// console.log(Math.cbrt(a));
+// console.log(Math.random());
+// console.log(Math.min(1, 2, 3, 4, 5));
+// console.log(Math.max(1, 2, 3, 4, 5));
+// console.log(Math.sin(a));
+// console.log(Math.cos(a));
+// console.log(Math.tan(a));
+// console.log(Math.asin(a));
+// console.log(Math.acos(a));
+// console.log(Math.atan(a));
 
 
 
-// WAP Swaping two numbers
-// let a = 10; 
-// let b = 20;
-// console.log("Before Swaping");
-// console.log("A ===>",a);
-// console.log("B ===>",b);
+// string object
+
+// let str = "Hello World";
+// console.log(str);
+// console.log(str.length);
+// console.log(str.toUpperCase());
+// console.log(str.toLowerCase());
+// console.log(str.charAt(0));
+// console.log(str.indexOf("World"));
+// console.log(str.substring(0, 5));
+// console.log(str.slice(0, 5));
+// console.log(str.replace("World", "JavaScript"));
+// console.log(str.concat("Hello", "World"));
+// console.log(str.trim());
+// console.log(str.split(" "));
+// console.log(str.includes("Hello"));
+// console.log(str.startsWith("Hello"));
+// console.log(str.endsWith("World"));
+// console.log(str.charAt(0));
 
 
-// a=a+b;
-// b=a-b;  
-// a=a-b;
+// object with Array
 
-// a=a*b;
-// b=a/b;  
-// a=a/b;
+// let person = {
+//     name: "John",
+//     age: 20,
+//     city: "New York",
+//     hobbies: ["reading", "writing", "coding"],
+//     address: {
+//         street: "123 Main St",
+//         city: "New York",
+//         state: "NY"
+//     }
+// }
+// console.log(person);
+// console.log(person.address.state);
 
-// a=a^b;
-// b=a^b;  
-// a=a^b;
+// Object wit looping
 
+let person = {
+    name: "John",
+    age: 20,
+    city: "New York",
+    hobbies: ["reading", "writing", "coding"],
+    address: {
+        street: "123 Main St",
+        city: "New York",
+        state: "NY"
+    }
+}
 
-// console.log("After Swaping");
-// console.log("A ===>",a);
-// console.log("B ===>",b);
+// let person = [11,22,33,44,55,66,77,]
+    
+// for(let key in person){
+//     console.log(`${key} : ${person[key]}`);
+// }
 
-
-
-
-
-// WAP to find gross salary of employee
-
-
-// let basicSalary = 50000; 
-// let HRA = 0.1 * basicSalary;
-// let DA = 0.05 * basicSalary;
-
-// let grossSalary = basicSalary + HRA + DA;
-
-// console.log("Basic Salary:", basicSalary);
-// console.log("HRA (10%):", HRA);
-// console.log("DA (5%):", DA);
-// console.log("Gross Salary:", grossSalary);
-
-
-// WAP to find simple interest
-
-
-// let principal = 1000; 
-// let rate = 5; 
-// let time = 2; 
-// let simpleInterest = (principal * rate * time) / 100;
-
-// console.log("Principal Amount:", principal);
-// console.log("Annual Interest Rate (%):", rate);
-// console.log("Time (years):", time);
-// console.log("Simple Interest:", simpleInterest);
-
-
-
-
-
-// WAP to find out of area of Circle
-
-// let r = 25;
-// const pi = 3.14;
-// let area = pi * r * r;
-
-// console.log("Radius of Circle:", area);
-
-
-
-// WAP to find out of area of triangle
-
-// let b=10;
-// let h=20;
-// let area = (b * h) / 2;
-// console.log("Base of Triangle:", area);
-
-// WAP to find out of area of rectangle
-
-// let h=20;
-// let l=10;
-// let area = l * h;
-// console.log("Area of Rectangle:", area);
-
-
-
-// WAP to convert dollar to rupees
-
-// let dollar = 100;
-// let exchangeRate = 82.5;
-// let rupees = dollar * exchangeRate;
-// console.log("converted to dollar to rupess ===>", rupees);
-
-
-
-
-
-// WAP to convert feet to inches
-
-// let feet = 20;
-// let inches = feet * 12;
-// console.log("converted to feet to inches ===>", inches);
-
-
-
-// WAP to convert feet to meters
-
-//  let feet = 28;
-// let inches = feet * 0.3048;
-// console.log("converted to feet to inches ===>", inches);
-
-
-// WAP to convert celcuis  to fehrenheit
-
-// let celsius = 25;
-// let fahrenheit = (celsius * 9/5) + 32;
-// console.log("converted to celsius to fehrenheit ===>", fahrenheit);
-
-// WAP a js program to calculate the given formula a**2 - b**2 = (a-b)(a+b)
-
-// let a = 50 , b = 30;
-
-// let leftSide = a ** 2 - b ** 2, rightSide = (a - b) * (a + b);
-
-// console.log("Left Side (a ** 2 - b ** 2):", leftSide);
-// console.log("Right Side ((a-b)(a+b)):", rightSide);
-// console.log("Are both sides equal?", leftSide === rightSide); 
-
-
-// let a = 50 , b = 30;
-
-// let leftSide = (a-b) ** 2 , rightSide = a**2 - 2*a*b + b**2;
-// console.log("Left Side ((a-b) ** 2):", leftSide);
-// console.log("Right Side (a**2 - 2*a*b + b**2):", rightSide);
-// console.log("Are both sides equal?", leftSide === rightSide);
+for(let key in person){
+    console.log(`${key} : ${person[key]}`);
+}
