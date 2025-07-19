@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration form</title>
+</head>
+<style>
+    label {
+        font-size: 25px;
+    }
+
+    .px-1 {
+        padding: 10px 0 10px 15px;
+    }
+</style>
+
+<body>
+    <form align="center" style="border: 5px dashed red; width: 400px; height: 400px; padding: 100px; margin: 100px;">
+        <label>First Name =></label>
+        <input placeholder="Enter Your First Name " type="text" id="fname" class="px-1" />
+        <br />
+        <br />
+        <label>Second Name =></label>
+        <input placeholder="Enter Your second Name " type="text" id="lname" class="px-1" />
+        <br />
+        <br />
+        <label>Email =></label>
+        <input placeholder="Enter Your Email " type="email" id="email" class="px-1" />
+        <br />
+        <br />
+        <label>Password =></label>
+        <input placeholder="Enter Your  password" type="password" id="password" class="px-1" />
+        <br />
+        <br />
+        <label>Select Hobby</label>
+        <input type="checkbox" />cricket
+        <input type="checkbox" />chess
+        <input type="checkbox" />developing
+        <br />
+        <br />
+        <label>Select Gender</label>
+        <input type="radio" name="Gender" />male
+        <input type="radio" name="Gender" />female
+        <input type="radio" name="Gender" />other
+        <br />
+        <br />
+        <label>Select City</label>
+        <Select>
+            <option>surat</option>
+            <option>amreli</option>
+            <option>mumbai</option>
+        </Select>
+        <br />
+        <br />
+        <input type="submit" />
+        <input type="reset" />
+    </form>
+</body>
+<script src="index.js"></script>
+
+</html>

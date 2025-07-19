@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random String Generator</title>
+    <style>
+        :root {
+            --primary-color: #00b894;
+            --secondary-color: #55efc4;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --accent-color: #6c5ce7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .controls {
+            padding: 25px;
+            background-color: #f8f9fa;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group h3 {
+            margin-bottom: 12px;
+            color: var(--dark-color);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+        }
+
+        .option input[type="checkbox"] {
+            margin-right: 8px;
+            accent-color: var(--primary-color);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option label {
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .length-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .length-control input[type="range"] {
+            flex: 1;
+            height: 8px;
+            accent-color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .length-control input[type="number"] {
+            width: 70px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .result-area {
+            padding: 0 25px 25px;
+        }
+
+        .result-container {
+            position: relative;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 100px;
+            background: white;
+            margin-bottom: 20px;
+        }
+
+        #result {
+            word-break: break-all;
+            line-height: 1.6;
+            font-family: 'Courier New', monospace;
+            color: var(--dark-color);
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--light-color);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--dark-color);
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #00997a;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background: #e1e5ea;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            font-size: 12px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Random String Generator</h1>
+            <p>Create secure random strings for passwords, tokens, and more</p>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <h3>Character Types</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" id="lowercase" checked>
+                        <label for="lowercase">Lowercase (a-z)</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="uppercase" checked>
+                        <label for="uppercase">Uppercase (A-Z)</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="numbers" checked>
+                        <label for="numbers">Numbers (0-9)</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="symbols">
+                        <label for="symbols">Symbols (!@#$%^&*)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>String Length</h3>
+                <div class="length-control">
+                    <input type="range" id="length-range" min="4" max="128" value="16">
+                    <input type="number" id="length-number" min="4" max="256" value="16">
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-area">
+            <div class="result-container">
+                <div id="result"></div>
+                <button class="copy-btn" id="copy-btn" title="Copy to clipboard">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="generate-btn">
+                    <i class="fas fa-random"></i> Generate
+                </button>
+                <button class="btn btn-secondary" id="copy-all-btn">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Made with ❤️ - Random String Generator Tool
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script>
+        // DOM Elements
+        const lowercaseCheckbox = document.getElementById('lowercase');
+        const uppercaseCheckbox = document.getElementById('uppercase');
+        const numbersCheckbox = document.getElementById('numbers');
+        const symbolsCheckbox = document.getElementById('symbols');
+        const lengthRange = document.getElementById('length-range');
+        const lengthNumber = document.getElementById('length-number');
+        const generateBtn = document.getElementById('generate-btn');
+        const copyBtn = document.getElementById('copy-btn');
+        const copyAllBtn = document.getElementById('copy-all-btn');
+        const resultElement = document.getElementById('result');
+        const toast = document.getElementById('toast');
+
+        // Character sets
+        const characterSets = {
+            lowercase: 'abcdefghijklmnopqrstuvwxyz',
+            uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            numbers: '0123456789',
+            symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+        };
+
+        // Sync range and number inputs
+        lengthRange.addEventListener('input', () => {
+            lengthNumber.value = lengthRange.value;
+        });
+
+        lengthNumber.addEventListener('input', () => {
+            let value = parseInt(lengthNumber.value);
+            if (isNaN(value)) value = 16;
+            if (value < 4) value = 4;
+            if (value > 256) value = 256;
+            
+            lengthNumber.value = value;
+            lengthRange.value = value > 128 ? 128 : value;
+        });
+
+        // Generate random string
+        function generateRandomString() {
+            const length = parseInt(lengthNumber.value);
+            let characters = '';
+            let result = '';
+            
+            // Build character pool based on selected options
+            if (lowercaseCheckbox.checked) characters += characterSets.lowercase;
+            if (uppercaseCheckbox.checked) characters += characterSets.uppercase;
+            if (numbersCheckbox.checked) characters += characterSets.numbers;
+            if (symbolsCheckbox.checked) characters += characterSets.symbols;
+            
+            // If no character types selected, use all except symbols
+            if (!characters) {
+                characters = characterSets.lowercase + characterSets.uppercase + characterSets.numbers;
+            }
+            
+            // Generate random string
+            const charactersLength = characters.length;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            
+            return result;
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast();
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
+        // Show toast notification
+        function showToast() {
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Event listeners
+        generateBtn.addEventListener('click', () => {
+            resultElement.textContent = generateRandomString();
+        });
+
+        copyBtn.addEventListener('click', () => {
+            if (resultElement.textContent) {
+                copyToClipboard(resultElement.textContent);
+            }
+        });
+
+        copyAllBtn.addEventListener('click', () => {
+            if (resultElement.textContent) {
+                copyToClipboard(resultElement.textContent);
+            } else {
+                const text = generateRandomString();
+                resultElement.textContent = text;
+                copyToClipboard(text);
+            }
+        });
+
+        // Generate initial string
+        generateBtn.click();
+    </script>
+</body>
+</html>

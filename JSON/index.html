@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="addDiv" align="center">
+        <h2>Add User</h2>
+        <form id="addUser">
+            <table>
+                <tr>
+                    <td class="card-title">First Name =></td>
+                    <td><input type="text" id="fname"></td>
+                </tr>
+                <tr>
+                    <td class="card-title">Last Name =></td>
+                    <td><input type="text" id="lname"></td>
+                </tr>
+                <tr>
+                    <td class="card-title">Email =></td>
+                    <td><input type="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td class="card-title">password =></td>
+                    <td><input type="password" id="password"></td>
+                </tr>
+                <tr>
+                    <td class="card-title">mobileNo =></td>
+                    <td><input type="number" id="mobileNo"></td>
+                </tr>
+                <br>
+                <br>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Add User" style="color: #fff;
+    padding: 15px 15px;
+    margin: 15px;
+    background-color: #0f230d;
+    box-shadow: rgba(8, 194, 21, 0.9) 0px 0px 15px;
+    font-size: 25px;
+    font-weight: 600;
+    transition: ease-in-out .5s;"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div id="editDiv" align="center" style="display: none;">
+        <h2>Edit User</h2>
+        <form id="editUser">
+            <table>
+                <tr>
+                    <td class="card-title">First Name =></td>
+                    <td><input type="text" id="editFname"></td>
+                </tr>
+                <tr>
+                    <td class="card-title">Last Name =></td>
+                    <td><input type="text" id="editLname"></td>
+                </tr>
+                <tr>
+                    <td class="card-title">Email =></td>
+                    <td><input type="email" id="editEmail"></td>
+                </tr>
+                <tr>
+                    <td class="card-title">password =></td>
+                    <td><input type="password" id="editPassword"></td>
+                </tr>
+                <tr>
+                    <td class="card-title">mobileNo =></td>
+                    <td><input type="number" id="editMobileNo"></td>
+                </tr>
+                <br>
+                <br>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Edit User" style="color: #fff;
+    padding: 15px 15px;
+    margin: 15px;
+    background-color: #0f230d;
+    box-shadow: rgba(8, 194, 21, 0.9) 0px 0px 15px;
+    font-size: 25px;
+    font-weight: 600;
+    transition: ease-in-out .5s;"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <!-- View Data -->
+    <div align="center">
+        <h2>User Information</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td>mobileNo</td>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody id="viewData">
+                <!-- view all Data here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="CRUD.js"></script>
+</body>
+
+</html>

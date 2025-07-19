@@ -1,0 +1,94 @@
+/* Base Styles */
+:root {
+    --primary: #ff6b6b;
+    --secondary: #ffa3a3;
+    --dark: #333;
+    --light: #f8f9fa;
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+[data-theme="dark"] {
+    --primary: #ff8787;
+    --secondary: #ffc9c9;
+    --dark: #f8f9fa;
+    --light: #212529;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--dark);
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* Countdown Styles */
+.countdown-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 10px;
+    min-width: 100px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.time-box span {
+    font-size: 3rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.time-box:hover span {
+    transform: scale(1.1);
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--light);
+        flex-direction: column;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    left: var(--x);
+    width: 40px;
+    height: 50px;
+    background: var(--c);
+    border-radius: 50%;
+    animation: float-up var(--t) linear infinite;
+}
+
+@keyframes float-up {
+    to { 
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}

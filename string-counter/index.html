@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Counter</title>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --success-color: #00b894;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .text-area {
+            padding: 20px;
+        }
+
+        #text-input {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            resize: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        #text-input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 120px;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-box h3 {
+            color: var(--dark-color);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .stat-box .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-box.characters {
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .stat-box.words {
+            border-bottom: 3px solid var(--success-color);
+        }
+
+        .stat-box.lines {
+            border-bottom: 3px solid #fd79a8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .stats {
+                flex-direction: column;
+            }
+            
+            .stat-box {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>String Counter</h1>
+            <p>Count characters, words, and lines in real-time</p>
+        </div>
+        
+        <div class="text-area">
+            <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box characters">
+                <h3>Characters</h3>
+                <div class="value" id="char-count">0</div>
+            </div>
+            
+            <div class="stat-box words">
+                <h3>Words</h3>
+                <div class="value" id="word-count">0</div>
+            </div>
+            
+            <div class="stat-box lines">
+                <h3>Lines</h3>
+                <div class="value" id="line-count">0</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Made with ❤️ - String Counter Tool
+        </div>
+    </div>
+
+    <script>
+        const textInput = document.getElementById('text-input');
+        const charCount = document.getElementById('char-count');
+        const wordCount = document.getElementById('word-count');
+        const lineCount = document.getElementById('line-count');
+
+        textInput.addEventListener('input', updateCounts);
+
+        function updateCounts() {
+            const text = textInput.value;
+            
+            // Character count (including spaces)
+            charCount.textContent = text.length;
+            
+            // Word count
+            const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+            wordCount.textContent = words;
+            
+            // Line count
+            const lines = text === '' ? 0 : text.split('\n').length;
+            lineCount.textContent = lines;
+        }
+
+        // Initialize counts
+        updateCounts();
+    </script>
+</body>
+</html>
