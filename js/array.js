@@ -6,23 +6,25 @@
 
 // let num = new Array(1,2,3,4,5);
 
-let data = [11,22,33,44,55,66,77,88,99];
+// let data = [11,22,33,44,55,66,77,88,99];
 // let select = ["HTML", "CSS", "JS", "React", "Node", "Express"];
 
 
 // 7. Write a javascript program to print a array element in reverse order.
 
-// let arr = [1,2,3,4,5,6,7,8,9,10]
+let arr = [1,2,3,4,5,6,7,8,9,10]
 
-// let reverse = arr.reverse();
+let reverse = arr.reverse();
 
 
 // console.log(reverse);
-console.log(data);
+// console.log(data);
 // console.log(select);
 // console.log(select[0]);
 // console.log(select[2]);
 // console.log(select[5]);
+
+
 // 3. Write a javascript program to print a maxmimum and mimimum value of given array.(using function and logic)
 
 
@@ -88,22 +90,3 @@ console.log(data);
 //     return Element * 8;
 // })
 // console.log(ans);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
