@@ -344,76 +344,74 @@
 // console.log(math); 
 
 
-// class Node{
-//     constructor(data){
-//         this.data = data;
-//         this.next = null;
-//     }
-// }
-// class SinglyLinkList{
-//     constructor(){
-//         this.head = null;
-//     }
+class Node{
+    constructor(data){
+        this.data = data;
+        this.next = null;
+    }
+}
+class SinglyLinkList{
+    constructor(){
+        this.head = null;
+    }
     
-//     appendData(val){
-//         let temp = new Node(val);
+    appendData(val){
+        let temp = new Node(val);
 
-//         if (this.head == null) {
-//             this.head = temp;
-//         }
-//         else{
-//             let current = this.head;
+        if (this.head == null) {
+            this.head = temp;
+        }
+        else{
+            let current = this.head;
 
-//             while(current.next != null){
-//                 current = current.next;
-//             }
-//             current.next = temp;
-//         }
-//     }
+            while(current.next != null){
+                current = current.next;
+            }
+            current.next = temp;
+        }
+    }
 
-//     removeData(){
-//         if (this.head == null) {
-//             console.log("have kai nathi pan tya");
-//         } else if (this.head.next == null) {
-//             this.head = null
-//         }
-//         else{
-//             let current = this.head;
-//             let prev;
-//             while(current.next != null){
-//                 prev = current;
-//                 current = current.next;
-//             }
-//             prev.next = null;
-//         }
-//     }
-//     displayData(){
-//         if (this.head == null) {
-//             console.log("List is Empty");
-//         } else {
-//             let current = this.head;
-//             let data = "";
-//             while (current) {
-//                 data +=current.data + "->";
-//                 current = current.next;
-//             } 
-//             console.log(data);
-//         }
-//     }
-// };
+    removeData(){
+        if (this.head == null) {
+            console.log("have kai nathi pan tya");
+        } else if (this.head.next == null) {
+            this.head = null
+        }
+        else{
+            let current = this.head;
+            let prev;
+            while(current.next != null){
+                prev = current;
+                current = current.next;
+            }
+            prev.next = null;
+        }
+    }
+    displayData(){
+        if (this.head == null) {
+            console.log("List is Empty");
+        } else {
+            let current = this.head;
+            let data = "";
+            while (current) {
+                data +=current.data + "->";
+                current = current.next;
+            } 
+            console.log(data);
+        }
+    }
+};
 
-// let singlyLinkList = new SinglyLinkList();
+let singlyLinkList = new SinglyLinkList();
 
-// singlyLinkList.appendData(100);
-// singlyLinkList.appendData(200);
-// singlyLinkList.appendData(300);
-// singlyLinkList.appendData(400);
+singlyLinkList.appendData(100);
+singlyLinkList.appendData(200);
+singlyLinkList.appendData(300);
+singlyLinkList.appendData(400);
 
-// singlyLinkList.displayData();
+singlyLinkList.displayData();
 
 
-// singlyLinkList.removeData();
-// singlyLinkList.removeData();
-// singlyLinkList.removeData();
-// singlyLinkList.removeData();
-// singlyLinkList.displayData();
+singlyLinkList.removeData();
+singlyLinkList.removeData();
+singlyLinkList.displayData();
